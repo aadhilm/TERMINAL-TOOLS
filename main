@@ -1,0 +1,253 @@
+#!/bin/bash
+
+# Function to display the banner
+banner() {
+    cat 4444 | lolcat
+    toilet -f mono12 "CR42" | lolcat
+    echo -e "\nWelcome to the CR42 Script!" | lolcat
+}
+
+menu() {
+    local choices=(
+        "List files"
+        "Fun and Entertainment Tools"
+        "Network Tools"
+        "File Management Tools"
+        "System Monitoring and Performance Tools"
+        "Exit"
+    )
+
+    local selected=$(printf "%s\n" "${choices[@]}" | fzf --height=10 --border --reverse --ansi)
+
+    case $selected in
+        "List files")
+            ranger
+            ;;
+        "Fun and Entertainment Tools")
+            while true; do
+                select_fun_tools
+                echo -n "Press [Enter] key to return to fun tools menu or 'q' to exit..."
+                read -r input
+                if [ "$input" == "q" ]; then
+                    break
+                fi
+            done
+            ;;
+        "Network Tools")
+            while true; do
+                select_network_tools
+                echo -n "Press [Enter] key to return to network tools menu or 'q' to exit..."
+                read -r input
+                if [ "$input" == "q" ]; then
+                    break
+                fi
+            done
+            ;;
+        "File Management Tools")
+            while true; do
+                select_file_management_tools
+                echo -n "Press [Enter] key to return to file management menu or 'q' to exit..."
+                read -r input
+                if [ "$input" == "q" ]; then
+                    break
+                fi
+            done
+            ;;
+        "System Monitoring and Performance Tools")
+            while true; do
+                select_system_monitoring_tools
+                echo -n "Press [Enter] key to return to system monitoring menu or 'q' to exit..."
+                read -r input
+                if [ "$input" == "q" ]; then
+                    break
+                fi
+            done
+            ;;
+        "Exit")
+            exit 0
+            ;;
+        *)
+            echo "Invalid option"
+            ;;
+    esac
+}
+
+# Fun and Entertainment Tools
+select_fun_tools() {
+    local fun_tools=(
+        "fortune"
+        "sl"
+        "lolcat"
+        "cowsay"
+        "Text printing"
+    )
+
+    echo "Select a fun tool:"
+    local fun_choice=$(printf "%s\n" "${fun_tools[@]}" | fzf --height=10 --border --reverse --ansi)
+
+    case $fun_choice in
+        "fortune")
+            fortune | lolcat
+            ;;
+        "sl")
+            sl
+            ;;
+        "lolcat")
+            echo "Enter the text to rainbowize:"
+            read -r lolcat_text
+            echo "$lolcat_text" | lolcat
+            ;;
+        "cowsay")
+            select_cowsay
+            ;;
+        "Text printing")
+            select_text_printing
+            ;;
+        *)
+            echo "Invalid option"
+            ;;
+    esac
+}
+
+# Network Tools
+select_network_tools() {
+    local network_tools=(
+        "ping"
+        "traceroute"
+        "netstat"
+        "ifconfig"
+        "curl"
+        "wget"
+    )
+
+    echo "Select a network tool:"
+    local tool_choice=$(printf "%s\n" "${network_tools[@]}" | fzf --height=10 --border --reverse --ansi)
+
+    case $tool_choice in
+        "ping")
+            echo "Enter the host to ping:"
+            read -r host
+            ping -c 4 "$host"
+            ;;
+        "traceroute")
+            echo "Enter the host for traceroute:"
+            read -r host
+            traceroute "$host"
+            ;;
+        "netstat")
+            netstat -tuln
+            ;;
+        "ifconfig")
+            ifconfig
+            ;;
+        "curl")
+            echo "Enter the URL to curl:"
+            read -r url
+            curl "$url"
+            ;;
+        "wget")
+            echo "Enter the URL to wget:"
+            read -r url
+            wget "$url"
+            ;;
+        *)
+            echo "Invalid option"
+            ;;
+    esac
+}
+
+# File Management Tools
+select_file_management_tools() {
+    local file_tools=(
+        "Find files"
+        "Search text in files"
+        "Copy files"
+        "Move files"
+        "Delete files"
+    )
+
+    echo "Select a file management tool:"
+    local tool_choice=$(printf "%s\n" "${file_tools[@]}" | fzf --height=10 --border --reverse --ansi)
+
+    case $tool_choice in
+        "Find files")
+            echo "Enter the filename pattern to search for:"
+            read -r pattern
+            find . -name "$pattern"
+            ;;
+        "Search text in files")
+            echo "Enter the text to search for:"
+            read -r text
+            grep -rnw . -e "$text"
+            ;;
+        "Copy files")
+            echo "Enter the source file path:"
+            read -r source
+            echo "Enter the destination path:"
+            read -r destination
+            cp "$source" "$destination"
+            ;;
+        "Move files")
+            echo "Enter the source file path:"
+            read -r source
+            echo "Enter the destination path:"
+            read -r destination
+            mv "$source" "$destination"
+            ;;
+        "Delete files")
+            echo "Enter the file path to delete:"
+            read -r file
+            rm "$file"
+            ;;
+        *)
+            echo "Invalid option"
+            ;;
+    esac
+}
+
+# System Monitoring and Performance Tools
+select_system_monitoring_tools() {
+    local monitoring_tools=(
+        "top"
+        "htop"
+        "df"
+        "free"
+        "iostat"
+    )
+
+    echo "Select a system monitoring tool:"
+    local tool_choice=$(printf "%s\n" "${monitoring_tools[@]}" | fzf --height=10 --border --reverse --ansi)
+
+    case $tool_choice in
+        "top")
+            top
+            ;;
+        "htop")
+            htop
+            ;;
+        "df")
+            df -h
+            ;;
+        "free")
+            free -h
+            ;;
+        "iostat")
+            iostat
+            ;;
+        *)
+            echo "Invalid option"
+            ;;
+    esac
+}
+
+# Display the banner
+clear
+banner
+
+# Menu loop
+while true; do
+    echo
+    menu
+    echo -n "Press [Enter] key to continue..."
+    read -r
+done
