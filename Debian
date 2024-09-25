@@ -1,0 +1,19 @@
+clear
+apt update
+apt upgrade -y
+
+# Install basic packages
+apt install figlet -y
+figlet Basic Installation
+apt install toilet -y
+apt install cowsay -y
+apt install nano -y
+apt install ruby -y
+
+# Install lolcat
+gem install lolcat
+
+# Final message
+figlet -f big Done !!! | lolcat
+echo
+echo -e "\033[1m Now Run bash t-ban.sh...!!!"
