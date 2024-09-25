@@ -29,7 +29,7 @@ ________________________________    _____  .___ _______      _____  .____       
 \__    ___/\_   _____/\______   \  /     \ |   |\      \    /  _  \ |    |           \__    ___/\_____  \  \_____  \ |    |     /   _____/
   |    |    |    __)_  |       _/ /  \ /  \|   |/   |   \  /  /_\  \|    |      ______ |    |    /   |   \  /   |   \|    |     \_____  \ 
   |    |    |        \ |    |   \/    Y    \   /    |    \/    |    \    |___  /_____/ |    |   /    |    \/    |    \    |___  /        \
-  |____|   /_______  / |____|_  /\____|__  /___\____|__  /\____|__  /_______ \         |____|   \_______  /\_______  /_______ \/_______  /
+  |____|   /_______  / |____|_  /\____|__  /___\____|__  /\____|__  /_______ \         |____|   \_______  /\_______  /_______ \/_______  / 
                    \/         \/         \/            \/         \/        \/                          \/         \/        \/        \/ 
 EOF
 
@@ -37,6 +37,7 @@ EOF
     echo -e "\nWelcome to the CR42 Script!" | lolcat
 }
 
+# Main menu function
 menu() {
     local choices=(
         "List files"
@@ -44,6 +45,7 @@ menu() {
         "Network Tools"
         "File Management Tools"
         "System Monitoring and Performance Tools"
+        "Productivity Tools"
         "Exit"
     )
 
@@ -93,6 +95,16 @@ menu() {
                 fi
             done
             ;;
+        "Productivity Tools")
+            while true; do
+                select_productivity_tools
+                echo -n "Press [Enter] key to return to productivity tools menu or 'q' to exit..."
+                read -r input
+                if [ "$input" == "q" ]; then
+                    break
+                fi
+            done
+            ;;
         "Exit")
             exit 0
             ;;
@@ -110,6 +122,10 @@ select_fun_tools() {
         "lolcat"
         "cowsay"
         "Text printing"
+        "cmatrix"
+        "cbonsai"
+        "oneko"
+        "neofetch"
     )
 
     echo "Select a fun tool:"
@@ -132,6 +148,18 @@ select_fun_tools() {
             ;;
         "Text printing")
             select_text_printing
+            ;;
+        "cmatrix")
+            cmatrix
+            ;;
+        "cbonsai")
+            cbonsai
+            ;;
+        "oneko")
+            oneko
+            ;;
+        "neofetch")
+            neofetch
             ;;
         *)
             echo "Invalid option"
@@ -242,6 +270,12 @@ select_system_monitoring_tools() {
         "df"
         "free"
         "iostat"
+        "bmon"
+        "speedtest-cli"
+        "bpytop"
+        "nload"
+        "inxi"
+        "hollywood"
     )
 
     echo "Select a system monitoring tool:"
@@ -263,20 +297,51 @@ select_system_monitoring_tools() {
         "iostat")
             iostat
             ;;
+        "bmon")
+            bmon
+            ;;
+        "speedtest-cli")
+            speedtest-cli
+            ;;
+        "bpytop")
+            bpytop
+            ;;
+        "nload")
+            nload
+            ;;
+        "inxi")
+            inxi
+            ;;
+        "hollywood")
+            hollywood
+            ;;
         *)
             echo "Invalid option"
             ;;
     esac
 }
 
-# Display the banner
-clear
+# Productivity Tools
+select_productivity_tools() {
+    local productivity_tools=(
+        "calcurse"
+    )
+
+    echo "Select a productivity tool:"
+    local tool_choice=$(printf "%s\n" "${productivity_tools[@]}" | fzf --height=10 --border --reverse --ansi)
+
+    case $tool_choice in
+        "calcurse")
+            calcurse
+            ;;
+        *)
+            echo "Invalid option"
+            ;;
+    esac
+}
+
+# Call the banner
 banner
 
-# Menu loop
-while true; do
-    echo
-    menu
-    echo -n "Press [Enter] key to continue..."
-    read -r
-done
+# Run the menu
+menu
