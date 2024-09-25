@@ -1,0 +1,38 @@
+clear
+pkg update -y
+pkg upgrade -y
+
+# Install basic packages
+pkg install -y figlet
+pkg install -y toilet
+pkg install -y cowsay
+pkg install -y nano
+pkg install -y ruby
+pkg install -y fzf
+pkg install -y ranger
+pkg install -y fortune
+pkg install -y sl
+pkg install -y traceroute
+pkg install -y net-tools  # Provides netstat
+pkg install -y htop
+pkg install -y sysstat  # Provides iostat
+pkg install -y lolcat
+pkg install -y cmatrix
+pkg install -y cbonsai
+pkg install -y neofetch
+pkg install -y oneko
+pkg install -y calcurse
+pkg install -y bmon
+pkg install -y speedtest-cli
+pkg install -y bpytop
+pkg install -y nload
+pkg install -y inxi
+pkg install -y hollywood
+
+# Install lolcat via gem in case needed
+gem install lolcat
+
+# Final message
+figlet -f big Done !!! | lolcat
+echo
+echo -e "\033[1m Now Run bash TERMINAL-TOOLS...!!!"
