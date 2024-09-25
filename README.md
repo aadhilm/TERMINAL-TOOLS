@@ -34,7 +34,7 @@ Streamlining workflow by integrating a number of common commands under a single 
 Open terminal and type the following commands  
 
 
-> git clone
+> git clone https://github.com/aadhilm/TERMINAL-TOOLS.git
 
 > cd TERMINAL-TOOLS  
 
