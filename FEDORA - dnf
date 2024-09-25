@@ -1,0 +1,38 @@
+clear
+sudo dnf update -y
+sudo dnf upgrade -y
+
+# Install basic packages
+sudo dnf install -y figlet
+sudo dnf install -y toilet
+sudo dnf install -y cowsay
+sudo dnf install -y nano
+sudo dnf install -y ruby
+sudo dnf install -y fzf
+sudo dnf install -y ranger
+sudo dnf install -y fortune-mod
+sudo dnf install -y sl
+sudo dnf install -y traceroute
+sudo dnf install -y net-tools  # Provides netstat
+sudo dnf install -y htop
+sudo dnf install -y sysstat  # Provides iostat
+sudo dnf install -y lolcat
+sudo dnf install -y cmatrix
+sudo dnf install -y cbonsai
+sudo dnf install -y neofetch
+sudo dnf install -y oneko
+sudo dnf install -y calcurse
+sudo dnf install -y bmon
+sudo dnf install -y speedtest-cli
+sudo dnf install -y bpytop
+sudo dnf install -y nload
+sudo dnf install -y inxi
+sudo dnf install -y hollywood
+
+# Install lolcat via gem in case needed
+sudo gem install lolcat
+
+# Final message
+figlet -f big Done !!! | lolcat
+echo
+echo -e "\033[1m Now Run bash TERMINAL-TOOLS...!!!"
