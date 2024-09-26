@@ -25,16 +25,146 @@ banner() {
                                                   /=`^^=`""/`)-.
                                                   \ =  _ =     =\
                                                     `""` `~-. =   ;
-________________________________    _____  .___ _______      _____  .____            ___________________   ________  .____       _________
-\__    ___/\_   _____/\______   \  /     \ |   |\      \    /  _  \ |    |           \__    ___/\_____  \  \_____  \ |    |     /   _____/
-  |    |    |    __)_  |       _/ /  \ /  \|   |/   |   \  /  /_\  \|    |      ______ |    |    /   |   \  /   |   \|    |     \_____  \ 
-  |    |    |        \ |    |   \/    Y    \   /    |    \/    |    \    |___  /_____/ |    |   /    |    \/    |    \    |___  /        \
-  |____|   /_______  / |____|_  /\____|__  /___\____|__  /\____|__  /_______ \         |____|   \_______  /\_______  /_______ \/_______  / 
-                   \/         \/         \/            \/         \/        \/                          \/         \/        \/        \/ 
 EOF
 
     toilet -f mono12 "CR42" | lolcat
     echo -e "\nWelcome to the CR42 Script!" | lolcat
+}
+
+# Figlet style selection
+select_figlet() {
+    local figlet_styles=(
+        "slant"
+        "centered"
+        "wide"
+        "left-align"
+        "right-align"
+        "terminal-width"
+        "Return to Main Menu"
+    )
+
+    local style=$(printf "%s\n" "${figlet_styles[@]}" | fzf --height=10 --border --reverse --ansi)
+
+    if [[ "$style" == "Return to Main Menu" ]]; then
+        return 0
+    fi
+
+    if [[ -n "$style" ]]; then
+        echo "Enter the text to print:"
+        read -r text_to_print
+
+        case $style in
+            "slant")
+                figlet -f slant "$text_to_print" | lolcat
+                ;;
+            "centered")
+                figlet -c "$text_to_print" | lolcat
+                ;;
+            "wide")
+                figlet -w 80 "$text_to_print" | lolcat
+                ;;
+            "left-align")
+                figlet -l "$text_to_print" | lolcat
+                ;;
+            "right-align")
+                figlet -r "$text_to_print" | lolcat
+                ;;
+            "terminal-width")
+                figlet -t "$text_to_print" | lolcat
+                ;;
+            *)
+                echo "Invalid option!"
+                ;;
+        esac
+    fi
+
+    # Prompt to return to the main menu
+    read -p "Press [Enter] to return to the Text printing menu..." input
+}
+
+# Toilet style selection
+select_toilet() {
+    local toilet_styles=(
+        "metal"
+        "gay"
+        "Return to Main Menu"
+    )
+
+    local style=$(printf "%s\n" "${toilet_styles[@]}" | fzf --height=10 --border --reverse --ansi)
+
+    if [[ "$style" == "Return to Main Menu" ]]; then
+        return 0
+    fi
+
+    if [[ -n "$style" ]]; then
+        echo "Enter the text to print:"
+        read -r text_to_print
+
+        case $style in
+            "metal")
+                toilet -F metal "$text_to_print" | lolcat
+                ;;
+            "gay")
+                toilet -F gay "$text_to_print" | lolcat
+                ;;
+            *)
+                echo "Invalid option!"
+                ;;
+        esac
+    fi
+
+    # Prompt to return to the main menu
+    read -p "Press [Enter] to return to the Text printing menu..." input
+}
+
+# Cowsay style selection
+select_cowsay() {
+    echo "Enter the text to cowsay:"
+    read -r cowsay_text
+    cowsay "$cowsay_text" | lolcat
+
+    # Prompt to return to the main menu
+    read -p "Press [Enter] to return to the Text printing menu..." input
+}
+
+# Boxes style selection
+select_boxes() {
+    local boxes_styles=(
+        "ada-box"
+        "ada-cmt"
+        "bear"
+        "boxquote"
+        "boy"
+        "c-cmt"
+        "cat"
+        "dog"
+        "scroll"
+        "spring"
+        "stark1"
+        "twisted"
+        "unicornsay"
+        "Return to Main Menu"
+    )
+
+    local style=$(printf "%s\n" "${boxes_styles[@]}" | fzf --height=10 --border --reverse --ansi)
+
+    if [[ "$style" == "Return to Main Menu" ]]; then
+        return 0
+    fi
+
+    if [[ -n "$style" ]]; then
+        echo "Enter the text to box:"
+        read -r text_to_print
+
+        if command -v boxes &> /dev/null; then
+            echo "$text_to_print" | boxes -d "$style" | lolcat
+        else
+            echo "Error: 'boxes' command not found. Please install it."
+        fi
+    fi
+
+    # Prompt to return to the main menu
+    read -p "Press [Enter] to return to the Text printing menu..." input
 }
 
 # Main menu function
@@ -120,16 +250,20 @@ select_fun_tools() {
         "fortune"
         "sl"
         "lolcat"
-        "cowsay"
         "Text printing"
         "cmatrix"
         "cbonsai"
         "oneko"
         "neofetch"
+        "Return to Main Menu"
     )
 
     echo "Select a fun tool:"
     local fun_choice=$(printf "%s\n" "${fun_tools[@]}" | fzf --height=10 --border --reverse --ansi)
+
+    if [[ "$fun_choice" == "Return to Main Menu" ]]; then
+        return 0
+    fi
 
     case $fun_choice in
         "fortune")
@@ -142,9 +276,6 @@ select_fun_tools() {
             echo "Enter the text to rainbowize:"
             read -r lolcat_text
             echo "$lolcat_text" | lolcat
-            ;;
-        "cowsay")
-            select_cowsay
             ;;
         "Text printing")
             select_text_printing
@@ -167,36 +298,69 @@ select_fun_tools() {
     esac
 }
 
+# Text printing tools (Figlet, Toilet, Cowsay, Boxes)
+select_text_printing() {
+    local text_printing_tools=(
+        "figlet"
+        "toilet"
+        "cowsay"
+        "boxes"
+        "Return to Main Menu"
+    )
+
+    echo "Select a text printing tool:"
+    local printing_choice=$(printf "%s\n" "${text_printing_tools[@]}" | fzf --height=10 --border --reverse --ansi)
+
+    case $printing_choice in
+        "figlet")
+            select_figlet
+            ;;
+        "toilet")
+            select_toilet
+            ;;
+        "cowsay")
+            select_cowsay
+            ;;
+        "boxes")
+            select_boxes
+            ;;
+        "Return to Main Menu")
+            return 0
+            ;;
+        *)
+            echo "Invalid option"
+            ;;
+    esac
+}
+
 # Network Tools
 select_network_tools() {
-    local network_tools=(
+    local net_tools=(
         "ping"
         "traceroute"
-        "netstat"
-        "ifconfig"
         "curl"
         "wget"
+        "iftop"
+        "Return to Main Menu"
     )
 
     echo "Select a network tool:"
-    local tool_choice=$(printf "%s\n" "${network_tools[@]}" | fzf --height=10 --border --reverse --ansi)
+    local net_choice=$(printf "%s\n" "${net_tools[@]}" | fzf --height=10 --border --reverse --ansi)
 
-    case $tool_choice in
+    if [[ "$net_choice" == "Return to Main Menu" ]]; then
+        return 0
+    fi
+
+    case $net_choice in
         "ping")
             echo "Enter the host to ping:"
             read -r host
-            ping -c 4 "$host"
+            ping "$host"
             ;;
         "traceroute")
-            echo "Enter the host for traceroute:"
+            echo "Enter the host to traceroute:"
             read -r host
             traceroute "$host"
-            ;;
-        "netstat")
-            netstat -tuln
-            ;;
-        "ifconfig")
-            ifconfig
             ;;
         "curl")
             echo "Enter the URL to curl:"
@@ -208,6 +372,9 @@ select_network_tools() {
             read -r url
             wget "$url"
             ;;
+        "iftop")
+            sudo iftop
+            ;;
         *)
             echo "Invalid option"
             ;;
@@ -217,44 +384,48 @@ select_network_tools() {
 # File Management Tools
 select_file_management_tools() {
     local file_tools=(
-        "Find files"
-        "Search text in files"
-        "Copy files"
-        "Move files"
-        "Delete files"
+        "ls"
+        "cp"
+        "mv"
+        "rm"
+        "touch"
+        "Return to Main Menu"
     )
 
     echo "Select a file management tool:"
-    local tool_choice=$(printf "%s\n" "${file_tools[@]}" | fzf --height=10 --border --reverse --ansi)
+    local file_choice=$(printf "%s\n" "${file_tools[@]}" | fzf --height=10 --border --reverse --ansi)
 
-    case $tool_choice in
-        "Find files")
-            echo "Enter the filename pattern to search for:"
-            read -r pattern
-            find . -name "$pattern"
+    if [[ "$file_choice" == "Return to Main Menu" ]]; then
+        return 0
+    fi
+
+    case $file_choice in
+        "ls")
+            ls
             ;;
-        "Search text in files")
-            echo "Enter the text to search for:"
-            read -r text
-            grep -rnw . -e "$text"
+        "cp")
+            echo "Enter the source file to copy:"
+            read -r src_file
+            echo "Enter the destination file:"
+            read -r dest_file
+            cp "$src_file" "$dest_file"
             ;;
-        "Copy files")
-            echo "Enter the source file path:"
-            read -r source
-            echo "Enter the destination path:"
-            read -r destination
-            cp "$source" "$destination"
+        "mv")
+            echo "Enter the source file to move:"
+            read -r src_file
+            echo "Enter the destination file:"
+            read -r dest_file
+            mv "$src_file" "$dest_file"
             ;;
-        "Move files")
-            echo "Enter the source file path:"
-            read -r source
-            echo "Enter the destination path:"
-            mv "$source" "$destination"
-            ;;
-        "Delete files")
-            echo "Enter the file path to delete:"
+        "rm")
+            echo "Enter the file to remove:"
             read -r file
             rm "$file"
+            ;;
+        "touch")
+            echo "Enter the file to create:"
+            read -r file
+            touch "$file"
             ;;
         *)
             echo "Invalid option"
@@ -264,41 +435,30 @@ select_file_management_tools() {
 
 # System Monitoring and Performance Tools
 select_system_monitoring_tools() {
-    local monitoring_tools=(
-        "top"
+    local sys_tools=(
         "htop"
-        "df"
-        "free"
-        "iostat"
-        "bmon"
+        "glances"
         "speedtest-cli"
         "bpytop"
         "nload"
         "inxi"
         "hollywood"
+        "Return to Main Menu"
     )
 
     echo "Select a system monitoring tool:"
-    local tool_choice=$(printf "%s\n" "${monitoring_tools[@]}" | fzf --height=10 --border --reverse --ansi)
+    local sys_choice=$(printf "%s\n" "${sys_tools[@]}" | fzf --height=10 --border --reverse --ansi)
 
-    case $tool_choice in
-        "top")
-            top
-            ;;
+    if [[ "$sys_choice" == "Return to Main Menu" ]]; then
+        return 0
+    fi
+
+    case $sys_choice in
         "htop")
             htop
             ;;
-        "df")
-            df -h
-            ;;
-        "free")
-            free -h
-            ;;
-        "iostat")
-            iostat
-            ;;
-        "bmon")
-            bmon
+        "glances")
+            glances
             ;;
         "speedtest-cli")
             speedtest-cli
@@ -310,7 +470,7 @@ select_system_monitoring_tools() {
             nload
             ;;
         "inxi")
-            inxi
+            inxi -F
             ;;
         "hollywood")
             hollywood
@@ -321,27 +481,8 @@ select_system_monitoring_tools() {
     esac
 }
 
-# Productivity Tools
-select_productivity_tools() {
-    local productivity_tools=(
-        "calcurse"
-    )
-
-    echo "Select a productivity tool:"
-    local tool_choice=$(printf "%s\n" "${productivity_tools[@]}" | fzf --height=10 --border --reverse --ansi)
-
-    case $tool_choice in
-        "calcurse")
-            calcurse
-            ;;
-        *)
-            echo "Invalid option"
-            ;;
-    esac
-}
-
 # Call the banner
 banner
 
-# Run the menu
+# Run the main menu
 menu
