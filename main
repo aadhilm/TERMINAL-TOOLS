@@ -33,7 +33,6 @@ ________________________________    _____  .___ _______      _____  .____       
                    \/         \/         \/            \/         \/        \/                          \/         \/        \/        \/ 
 EOF
 
-    toilet -f mono12 "CR42" | lolcat
     echo -e "\nWelcome to the CR42 Script!" | lolcat
 }
 
