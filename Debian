@@ -34,6 +34,5 @@ apt install hollywood -y
 gem install lolcat
 
 # Final message
-figlet -f big Done !!! | lolcat
 echo
 echo -e "\033[1m Now Run bash TERMINAL-TOOLS...!!!"
