@@ -45,11 +45,11 @@ Open terminal and type the following commands
 #Requirement packages installation command for each distribution [manually] :  
 
 
-> ./Debian or bash Debian   
+> sudo ./Debian or sudo bash Debian   
 
-> ./Fedora or bash Fedora   
+> sudo ./Fedora or sudo bash Fedora   
 
-> ./Arch Linux or bash Arch Linux  
+> sudo ./Arch Linux or sudo bash Arch Linux  
 
 > ./Android or bash Android 
 
