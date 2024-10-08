@@ -1,0 +1,435 @@
+#!/bin/bash
+
+# Function to display the banner
+banner() {
+ cat << "EOF" 
+                                          .   ,
+                                        '. '.  \  \
+                                        ._ '-.'. `\  \
+                                          '-._; .'; `-.'. 
+                                        `~-.; '.       '.
+                                          '--,`           '.
+                                            -='.          ;
+                                  .--=~~=-,    -.;        ;
+                                  .-=`;    `~,_.;        /
+                                  `  ,-`'    .-;         |
+                                    .-~`.    .;         ;
+                                      .;.-   .-;         ,\
+                                        `.'   ,=;     .-'  `~.-._
+                                        .';   .';  .'      .'   '-.
+                                          .\  ;  ;        ,.' _  a',
+                                          .'~";-`   ;      ;"~` `'-=.)
+                                        .' .'   . _;  ;',  ;
+                                        '-.._`~`.'  \  ; ; :
+                                            `~'    _'\\_ \\_ 
+                                                  /=`^^=`""/`)-.
+                                                  \ =  _ =     =\
+                                                    `""` `~-. =   ;
+________________________________    _____  .___ _______      _____  .____            ___________________   ________  .____       _________
+\__    ___/\_   _____/\______   \  /     \ |   |\      \    /  _  \ |    |           \__    ___/\_____  \  \_____  \ |    |     /   _____/
+  |    |    |    __)_  |       _/ /  \ /  \|   |/   |   \  /  /_\  \|    |      ______ |    |    /   |   \  /   |   \|    |     \_____  \ 
+  |    |    |        \ |    |   \/    Y    \   /    |    \/    |    \    |___  /_____/ |    |   /    |    \/    |    \    |___  /        \
+  |____|   /_______  / |____|_  /\____|__  /___\____|__  /\____|__  /_______ \         |____|   \_______  /\_______  /_______ \/_______  / 
+                   \/         \/         \/            \/         \/        \/                          \/         \/        \/        \/ 
+EOF
+
+	echo -e "\n                                              Welcome to the CR42 Script!\n" 
+   
+}
+
+# Function to check if a command exists
+command_exists() {
+    command -v "$1" &> /dev/null
+}
+
+# Placeholder functions for missing or undefined tools
+function list_files {
+    echo "Listing files in current directory:"
+    ls -l
+}
+
+function create_directory {
+    read -rp "Enter the directory name to create: " dir_name
+    mkdir -p "$dir_name" && echo "Directory '$dir_name' created." || echo "Failed to create directory '$dir_name'."
+}
+
+function copy_file {
+    read -rp "Enter the source file: " src_file
+    read -rp "Enter the destination path: " dest_path
+    cp "$src_file" "$dest_path" && echo "File '$src_file' copied to '$dest_path'." || echo "Failed to copy '$src_file' to '$dest_path'."
+}
+
+function ping_host {
+    read -rp "Enter the host to ping: " host
+    ping -c 4 "$host"
+}
+
+# Function to display the banner using cowsay with character options
+function display_cowsay {
+    if ! command_exists cowsay; then
+        echo "Cowsay is not installed. Please install it to use this feature."
+        return
+    fi
+
+    echo "Select a character for cowsay:"
+    echo "1. Tux"
+    echo "2. Dragon"
+    echo "3. Sheep"
+    echo "4. Moose"
+    echo "5. Stegosaurus"
+    echo "6. Elephant"
+    echo "7. Turkey"
+    echo "8. T-Rex"
+    echo "9. Default (Cow)"
+    
+    read -rp "Enter your choice [1-9]: " character_choice
+
+    case "$character_choice" in
+        1) character="tux" ;;
+        2) character="dragon" ;;
+        3) character="sheep" ;;
+        4) character="moose" ;;
+        5) character="stegosaurus" ;;
+        6) character="elephant" ;;
+        7) character="turkey" ;;
+        8) character="t-rex" ;;
+        9) character="cow" ;; # Default character
+        *)
+            echo "Invalid choice. Using default character (Cow)."
+            character="cow"
+            ;;
+    esac
+
+    read -rp "Enter the message to display: " message
+    cowsay -f "$character" "$message"
+}
+
+# Function to display the banner using toilet
+function display_toilet {
+    if ! command_exists toilet; then
+        echo "Toilet is not installed. Please install it to use this feature."
+        return
+    fi
+
+    echo "Enter the message to display with toilet:"
+    read -rp "Message: " message
+
+    echo "Select a style for toilet:"
+    echo "1. mono12"
+    echo "2. metal"
+    echo "3. standard"
+    echo "4. Return to Fun Tools Menu"
+
+    read -rp "Enter your choice [1-5]: " toilet_choice
+
+    case "$toilet_choice" in
+        1) toilet -f mono12 "$message" ;;
+        2) toilet -f metal "$message" ;;
+        3) toilet "$message" ;;
+        4) return ;;
+        *)
+            echo "Invalid choice. Returning to Fun Tools Menu."
+            return
+            ;;
+    esac
+}
+
+# Function to display the banner using boxes with design options
+function display_boxes {
+    if ! command_exists boxes; then
+        echo "Boxes is not installed. Please install it to use this feature."
+        return
+    fi
+
+    echo "Select a box design:"
+    echo "1. ada-box"
+    echo "2. ada-cmt"
+    echo "3. bear"
+    echo "4. boxquote"
+    echo "5. boy"
+    echo "6. c-cmt"
+    echo "7. cat"
+    echo "8. dog"
+    echo "9. scroll"
+    echo "10. spring"
+    echo "11. stark1"
+    echo "12. twisted"
+    echo "13. unicornsay"
+    echo "14. Return to Main Menu"
+
+    read -rp "Enter your choice [1-14]: " box_choice
+
+    case "$box_choice" in
+        1) box_design="ada-box" ;;
+        2) box_design="ada-cmt" ;;
+        3) box_design="bear" ;;
+        4) box_design="boxquote" ;;
+        5) box_design="boy" ;;
+        6) box_design="c-cmt" ;;
+        7) box_design="cat" ;;
+        8) box_design="dog" ;;
+        9) box_design="scroll" ;;
+        10) box_design="spring" ;;
+        11) box_design="stark1" ;;
+        12) box_design="twisted" ;;
+        13) box_design="unicornsay" ;;
+        14) return ;;  # Return to Main Menu
+        *)
+            echo "Invalid choice. Returning to Main Menu."
+            return
+            ;;
+    esac
+
+    read -rp "Enter the message to display: " message
+    echo "$message" | boxes -d "$box_design"
+}
+
+# Function to display CMatrix options
+function show_cmatrix_options {
+    if ! command_exists cmatrix; then
+        echo "CMatrix is not installed. Please install it to use this feature."
+        return
+    fi
+
+    echo "Select a CMatrix option:"
+    echo "1. Run CMatrix (default)"
+    echo "2. Set color (e.g., red)"
+    echo "3. Random mode"
+    echo "4. Mixed mode"
+    echo "5. Red mode with options"
+    echo "6. Return to Fun Tools Menu"
+
+    read -rp "Enter your choice [1-6]: " cmatrix_choice
+
+    case "$cmatrix_choice" in
+        1) cmatrix ;;
+        2) 
+            read -rp "Enter a color (e.g., red): " color
+            cmatrix -C "$color" ;;
+        3) cmatrix -r ;;
+        4) cmatrix -m ;;
+        5) cmatrix -B -o -s -u 8 -C red ;;
+        6) return ;;
+        *)
+            echo "Invalid choice. Returning to Fun Tools Menu."
+            return
+            ;;
+    esac
+}
+
+# Function to display text using figlet with styles
+function display_figlet {
+    if ! command_exists figlet; then
+        echo "Figlet is not installed. Please install it to use this feature."
+        return
+    fi
+
+    echo "Select a figlet style:"
+    echo "1. Slant"
+    echo "2. Centered"
+    echo "3. Wide"
+    echo "4. Left-align"
+    echo "5. Right-align"
+    echo "6. Terminal-width"
+    echo "7. Return to Fun Tools Menu"
+
+    read -rp "Enter your choice [1-7]: " style_choice
+
+    case "$style_choice" in
+        1) style="-f slant" ;;
+        2) style="-c" ;;
+        3) style="-w 100" ;;
+        4) style="-l" ;;
+        5) style="-r" ;;
+        6) style="-w $(tput cols)" ;;
+        7) return ;;
+        *)
+            echo "Invalid choice. Returning to Fun Tools Menu."
+            return
+            ;;
+    esac
+
+    read -rp "Enter the message to display with figlet: " message
+    figlet $style "$message"
+}
+
+# Fun Tools Menu
+function show_fun_tools_menu {
+    while true; do
+        echo "Fun Tools Menu:"
+        echo "1. Cowsay"
+        echo "2. Toilet"
+        echo "3. Boxes"
+        echo "4. CMatrix"
+        echo "5. Figlet"
+        echo "6. Neofetch [System info with log]"
+        echo "7. Fortune [Random Quote]"
+        echo "8. sl [Train Animation]"
+        echo "9. oneko [Cat Runner for ]"
+        echo "0. Return to Main Menu"
+
+        read -rp "Enter your choice [1-6]: " choice
+
+        case "$choice" in
+            1) display_cowsay ;;
+            2) display_toilet ;;
+            3) display_boxes ;;
+            4) show_cmatrix_options ;;
+            5) display_figlet ;;
+            6)	neofetch ;;
+            7)	fortune ;;
+            8)	sl ;;
+            9)	oneko ;;
+            0) break ;;  # Return to Main Menu
+            *)
+                echo "Invalid choice. Please select a number between 1 and 6."
+                ;;
+        esac
+
+        read -rp "Press Enter to return to the Fun Tools menu."
+    done
+}
+
+# File Management Tools Menu
+function show_file_management_tools_menu {
+    while true; do
+        echo "File Management Tools Menu:"
+        echo "1. List files"
+        echo "2. Create a directory"
+        echo "3. Copy a file"
+        echo "4. File Manger"
+        echo "5. File Branch"
+        echo "6. List File  "
+        echo "0. Return to Main Menu"
+
+        read -rp "Enter your choice [1-4]: " choice
+
+        case "$choice" in
+            1) list_files ;;
+            2) create_directory ;;
+            3) copy_file ;;
+            4) ranger ;;
+            5) tree ;;
+            6)	df ;;	
+            0) break ;;  # Return to Main Menu
+            *)
+                echo "Invalid choice. Please select a number between 1 and 4."
+                ;;
+        esac
+
+        read -rp "Press Enter to return to the File Management Tools menu."
+    done
+}
+
+# Network Tools Menu
+function show_network_tools_menu {
+    while true; do
+        echo "Network Tools Menu:"
+        echo "1. Ping a host"
+        echo "2. IP"
+        echo "3. Network status"
+        echo "0. Return to Main Menu"
+
+        read -rp "Enter your choice [1-3]: " choice
+
+        case "$choice" in
+            1) ping_host ;;
+            2) ifconfig ;;
+            3) iftop ;;
+            0) break ;;  # Return to Main Menu
+            *)
+                echo "Invalid choice. Please select a number between 1 and 3."
+                ;;
+        esac
+
+        read -rp "Press Enter to return to the Network Tools menu."
+    done
+}
+
+# Productivity Tools Menu
+function show_productivity_tools_menu {
+    while true; do
+        echo "Productivity Tools Menu:"
+        echo "1. Basic Calculation"
+        echo "2. Calender"
+        echo "3. Return to Main Menu"
+
+        read -rp "Enter your choice [1-2]: " choice
+
+        case "$choice" in
+            1) bc
+                ;;
+            2)  cal
+				;;
+            3) break ;;  # Return to Main Menu
+            *)
+                echo "Invalid choice. Please select a number between 1 and 2."
+                ;;
+        esac
+
+        read -rp "Press Enter to return to the Productivity Tools menu."
+    done
+}
+
+# System Monitoring Tools Menu
+function show_system_monitoring_tools_menu {
+    while true; do
+        echo "System Monitoring Tools Menu:"
+        echo "1. System info "
+        echo "2. System usage"
+        echo "3. Memory usage"
+        echo "4. Task manger"
+        echo "0. Return to Main Menu"
+
+        read -rp "Enter your choice [1-3]: " choice
+
+        case "$choice" in
+			1) inxi ;;
+            2) top ;;
+            3) free -h ;;
+            4) bpytop ;;
+            0) break ;;  # Return to Main Menu
+            *)
+                echo "Invalid choice. Please select a number between 1 and 3."
+                ;;
+        esac
+
+        read -rp "Press Enter to return to the System Monitoring Tools menu."
+    done
+}
+
+# Main menu function
+function show_main_menu {
+    while true; do
+        echo -e "  Main Menu: \n"
+        echo "1. Fun Tools"
+        echo "2. File Management Tools"
+        echo "3. Network Tools"
+        echo "4. Productivity Tools"
+        echo "5. System Monitoring Tools"
+        echo "6. Exit"
+
+        read -rp "Enter your choice [1-6]: " main_choice
+
+        case "$main_choice" in
+            1) show_fun_tools_menu ;;
+            2) show_file_management_tools_menu ;;
+            3) show_network_tools_menu ;;
+            4) show_productivity_tools_menu ;;
+            5) show_system_monitoring_tools_menu ;;
+            6) exit 0 ;;
+            *)
+                echo "Invalid choice. Please select a number between 1 and 6."
+                ;;
+        esac
+
+        read -rp "Press Enter to return to the Main Menu."
+    done
+}
+
+# Main loop to keep the menu running
+while true; do
+    clear
+    banner
+    show_main_menu
+done
