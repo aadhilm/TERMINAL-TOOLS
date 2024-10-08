@@ -1,4 +1,4 @@
-#!/bin/bash
+ #!/bin/bash
 
 # Function to display the banner
 banner() {
@@ -122,14 +122,30 @@ select_toilet() {
     read -p "Press [Enter] to return to the Text printing menu..." input
 }
 
-# Cowsay style selection
+# Cowsay character selection
 select_cowsay() {
-    echo "Enter the text to cowsay:"
-    read -r cowsay_text
-    cowsay "$cowsay_text" | lolcat
+    local cowsay_characters=(
+        "tux"
+        "dragon"
+        "sheep"
+        "moose"
+        "stegosaurus"
+        "elephant"
+        "turkey"
+        "t-rex"
+    )
 
-    # Prompt to return to the main menu
-    read -p "Press [Enter] to return to the Text printing menu..." input
+    echo "Select a cowsay character:"
+    local cow_choice=$(printf "%s\n" "${cowsay_characters[@]}" | fzf --height=10 --border)
+
+    echo "Enter the text you want cowsay to say:"
+    read -r cowsay_text
+
+    if [ -z "$cow_choice" ] || [ -z "$cowsay_text" ]; then
+        echo "Invalid choice or empty text!"
+    else
+        cowsay -f "$cow_choice" "$cowsay_text" | lolcat
+    fi
 }
 
 # Boxes style selection
@@ -286,7 +302,7 @@ select_fun_tools() {
             select_text_printing
             ;;
         "cmatrix")
-            cmatrix
+             select_cmatrix
             ;;
         "cbonsai")
             cbonsai
@@ -338,13 +354,95 @@ select_text_printing() {
     esac
 }
 
+# cmatrix options selection
+select_cmatrix() {
+    local cmatrix_options=(
+        "Asynchronous scroll (-a)"
+        "Bold characters on (-b)"
+        "All Bold characters (-B)"
+        "Japanese characters (-c)"
+        "Force the Linux \$TERM (-f)"
+        "Lock Mode (-L)"
+        "Old Style Scroll (-o)"
+        "No Bold (-n)"
+        "Screensaver Mode (-s)"
+        "X Window Mode (-x)"
+        "Speed Control (-u 7)"
+        "Change Color (-C red)"
+        "Rainbow Mode (-r)"
+        "Lambda Mode (-m)"
+        "Bonus Tip (-B -o -s -u 8 -C red)"
+        "Return to Fun Tools Menu"
+    )
+
+    echo "Select a cmatrix option:"
+    local cmatrix_choice=$(printf "%s\n" "${cmatrix_options[@]}" | fzf --height=15 --border --reverse --ansi)
+
+    case $cmatrix_choice in
+        "Asynchronous scroll (-a)")
+            cmatrix -a
+            ;;
+        "Bold characters on (-b)")
+            cmatrix -b
+            ;;
+        "All Bold characters (-B)")
+            cmatrix -B
+            ;;
+        "Japanese characters (-c)")
+            cmatrix -c
+            ;;
+        "Force the Linux \$TERM (-f)")
+            cmatrix -f
+            ;;
+        "Lock Mode (-L)")
+            cmatrix -L
+            ;;
+        "Old Style Scroll (-o)")
+            cmatrix -o
+            ;;
+        "No Bold (-n)")
+            cmatrix -n
+            ;;
+        "Screensaver Mode (-s)")
+            cmatrix -s
+            ;;
+        "X Window Mode (-x)")
+            cmatrix -x
+            ;;
+        "Speed Control (-u 7)")
+            cmatrix -u 7
+            ;;
+        "Change Color (-C red)")
+            cmatrix -C red
+            ;;
+        "Rainbow Mode (-r)")
+            cmatrix -r
+            ;;
+        "Lambda Mode (-m)")
+            cmatrix -m
+            ;;
+        "Bonus Tip (-B -o -s -u 8 -C red)")
+            cmatrix -B -o -s -u 8 -C red
+            ;;
+        "Return to Fun Tools Menu")
+            return 0
+            ;;
+        *)
+            echo "Invalid option!"
+            ;;
+    esac
+
+    # Prompt to return to the fun tools menu
+    read -p "Press [Enter] to return to the Fun tools menu..." input
+}
+
+
 # Network Tools
 select_network_tools() {
     local net_tools=(
+        "ip"
         "ping"
         "traceroute"
-        "curl"
-        "wget"
         "iftop"
         "Return to Main Menu"
     )
@@ -357,6 +455,9 @@ select_network_tools() {
     fi
 
     case $net_choice in
+        "ip")
+            sudo ifconfig
+            ;;
         "ping")
             echo "Enter the host to ping:"
             read -r host
@@ -366,16 +467,6 @@ select_network_tools() {
             echo "Enter the host to traceroute:"
             read -r host
             traceroute "$host"
-            ;;
-        "curl")
-            echo "Enter the URL to curl:"
-            read -r url
-            curl "$url"
-            ;;
-        "wget")
-            echo "Enter the URL to wget:"
-            read -r url
-            wget "$url"
             ;;
         "iftop")
             sudo iftop
@@ -394,6 +485,9 @@ select_file_management_tools() {
         "mv"
         "rm"
         "touch"
+        "ncdu"
+        "tree"
+        "df "
         "Return to Main Menu"
     )
 
@@ -432,6 +526,16 @@ select_file_management_tools() {
             read -r file
             touch "$file"
             ;;
+        "ncdu")
+            sudo ncdu
+            ;;
+        "tree")
+            sudo tree
+            ;;
+        "df")
+            sudo df -h
+            ;;
+            
         *)
             echo "Invalid option"
             ;;
@@ -486,8 +590,41 @@ select_system_monitoring_tools() {
     esac
 }
 
-# Call the banner
-banner
 
-# Run the main menu
-menu
+# Productivity Tools Menu
+select_productivity_tools() {
+    local productivity_tools=(
+        "cal"
+        "bc"
+        "Return to Main Menu"
+    )
+
+    echo "Select a productivity tool:"
+    local productivity_choice=$(printf "%s\n" "${productivity_tools[@]}" | fzf --height=10 --border --reverse --ansi)
+
+    if [[ "$productivity_choice" == "Return to Main Menu" ]]; then
+        return 0
+    fi
+
+    case $productivity_choice in
+        "cal")
+            cal
+            ;;
+        "bc")
+            echo "Enter a calculation (e.g., 5+3):"
+            read -r calculation
+            echo "$calculation" | bc
+            ;;
+        *)
+            echo "Invalid option"
+            ;;
+    esac
+}
+
+
+# Main loop
+while true; do
+    clear
+    banner
+    menu
+done
