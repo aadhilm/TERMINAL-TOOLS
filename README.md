@@ -59,7 +59,7 @@ Open terminal and type the following commands
 
 > ./TERMINAL-TOOLS or bash TERMINAL-TOOLS  
 
-
+if the "bash TERMINAL-TOOLS or ./TERMINAL-TOOLS" not work then run "bash Prototype or ./Prototype"
 
 #Tool Categories:
 
