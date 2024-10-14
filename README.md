@@ -77,13 +77,7 @@ Clone the repository :
 
 #Requirement packages installation command for each distribution [manually] :
 
->sudo ./Debian or sudo bash Debian
-
->sudo ./Fedora or sudo bash Fedora
-
-.sudo ./Arch Linux or sudo bash Arch Linux
-
->./Android or bash Android
+>install.sh
 
 🏃Run Command:
 
