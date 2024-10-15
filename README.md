@@ -75,9 +75,19 @@ Clone the repository :
 
 >chmod +x *
 
-#Requirement packages installation command for each distribution [manually] :
+#Requirement packages installation [auto] :
 
 >install.sh
+
+#Requirement packages installation command for each distribution [ manually ] :
+
+>bash Android or ./Android [ Android ]
+
+>bash Debian or ./Debian [ Debian ]
+
+>bash FEDORA or ./FEDORA [ FEDORA ]
+
+>bash ARCH LINUX or ./ARCH LINUX [ ARCH LINUX ]
 
 🏃Run Command:
 
