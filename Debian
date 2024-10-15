@@ -1,0 +1,38 @@
+clear
+apt update
+apt upgrade -y
+
+# Install basic packages
+apt install figlet -y
+apt install toilet -y
+apt install cowsay -y
+apt install nano -y
+apt install ruby -y
+apt install fzf -y
+apt install ranger -y
+apt install fortune -y
+apt install sl -y
+apt install traceroute -y
+apt install net-tools -y  # Provides netstat
+apt install htop -y
+apt install sysstat -y  # Provides iostat
+apt install lolcat -y
+apt install cmatrix -y
+apt install cbonsai -y
+apt install neofetch -y
+apt install oneko -y
+apt install calcurse -y
+apt install bmon -y
+apt install speedtest-cli -y
+apt install bpytop -y
+apt install nload -y
+apt install inxi -y
+apt install lolcat -y
+apt install hollywood -y
+
+# Install lolcat via gem in case needed
+gem install lolcat
+
+# Final message
+echo
+echo -e "\033[1m Now Run bash TERMINAL-TOOLS...!!!"
