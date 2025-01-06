@@ -108,7 +108,7 @@ File Management Tools : Enables basic file operations like finding, copying, mov
 System Monitoring Tools : Offers utilities like top, htop, df, and free to monitor system resources and performance.
 
 📝 License :
-This project is open-source, licensed under [MIT License].
+This project is open-source, licensed under [Apache License 2.0].
 
 🤝 Contributing :
 Feel free to contribute to the repository by submitting issues or creating pull requests to add more tools or improve functionality.
