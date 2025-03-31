@@ -3,6 +3,8 @@ TERMINAL-TOOLS
 Description:
 
 This Bash script is an interactive command-line tool that provides a simple menu-based interface for performing various tasks, ranging from fun activities to system monitoring.
+A Simple Menu-Based Bash Script that Serves as a Powerful, Flexible, and User-Friendly Tool.
+It Integrates Various System Utilities and Fun Features Into a Single Interactive Interface, Allowing Users To Perform a Wide Range Of Tasks From One Command-Line Menu.
 
 ⚠️ Disclaimer:
 
