@@ -35,3 +35,7 @@ else
     echo "Unsupported Linux distribution."
     exit 1
 fi
+
+# Final message
+echo
+echo -e "\033[1m Now Run bash TERMINAL-TOOLS...!!!"
