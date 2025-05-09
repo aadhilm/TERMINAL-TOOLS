@@ -87,17 +87,7 @@ Clone the repository:
 
 Note: If the above command doesn't work, try :
 
-">bash Prototype or ./Prototype"
-
-📋Tool Categories :
-
-Fun and Entertainment Tools : Includes utilities like fortune, sl, cowsay, and lolcat to add a playful aspect.
-
-Network Tools : Provides commands like ping, traceroute, netstat, and curl for basic network diagnostics and interactions.
-
-File Management Tools : Enables basic file operations like finding, copying, moving, deleting, and searching text within files.
-
-System Monitoring Tools : Offers utilities like top, htop, df, and free to monitor system resources and performance.
+>bash Prototype or ./Prototype
 
 📝 License :
 This project is open-source, licensed under [Apache License 2.0].
