@@ -1,5 +1,19 @@
 TERMINAL-TOOLS
+# TERMINAL-TOOLS
 
+[![GitHub license](https://img.shields.io/github/license/aadhilm/TERMINAL-TOOLS)](https://github.com/aadhilm/TERMINAL-TOOLS/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/aadhilm/TERMINAL-TOOLS)](https://github.com/aadhilm/TERMINAL-TOOLS/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/aadhilm/TERMINAL-TOOLS)](https://github.com/aadhilm/TERMINAL-TOOLS/issues)
+[![GitHub forks](https://img.shields.io/github/forks/aadhilm/TERMINAL-TOOLS)](https://github.com/aadhilm/TERMINAL-TOOLS/network)
+[![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Android-blue)](https://github.com/aadhilm/TERMINAL-TOOLS)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/aadhilm/TERMINAL-TOOLS/graphs/commit-activity)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/aadhilm/TERMINAL-TOOLS/pulls)
+
+## Description
+
+This Bash script is an interactive command-line tool that provides a simple menu-based interface for performing various tasks, ranging from fun activities to system monitoring.
+
+[... rest of your existing README content remains exactly the same ...]
 Description:
 
 This Bash script is an interactive command-line tool that provides a simple menu-based interface for performing various tasks, ranging from fun activities to system monitoring.
