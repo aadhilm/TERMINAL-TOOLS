@@ -1,13 +1,13 @@
 TERMINAL-TOOLS
 # TERMINAL-TOOLS
 
-[![GitHub license](https://img.shields.io/github/license/aadhilm/TERMINAL-TOOLS)](https://github.com/aadhilm/TERMINAL-TOOLS/blob/main/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/aadhilm/TERMINAL-TOOLS)](https://github.com/aadhilm/TERMINAL-TOOLS/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/aadhilm/TERMINAL-TOOLS)](https://github.com/aadhilm/TERMINAL-TOOLS/issues)
-[![GitHub forks](https://img.shields.io/github/forks/aadhilm/TERMINAL-TOOLS)](https://github.com/aadhilm/TERMINAL-TOOLS/network)
-[![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Android-blue)](https://github.com/aadhilm/TERMINAL-TOOLS)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/aadhilm/TERMINAL-TOOLS/graphs/commit-activity)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/aadhilm/TERMINAL-TOOLS/pulls)
+
+[![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Android-blue)](https://github.com/aadhilm/TERMINAL-TOOLS)
+[![Awesome Bash](https://img.shields.io/badge/Awesome-Bash-4EAA25?logo=gnubash)](https://github.com/awesome-lists/awesome-bash)
+[![CLI Tools](https://img.shields.io/badge/CLI-Tools-5391FE?logo=terminal)](https://github.com/topics/command-line-tool)
+[![System Utilities](https://img.shields.io/badge/System-Utilities-FF6E00?logo=linux)](https://github.com/topics/system-tools)
+[![Terminal Fun](https://img.shields.io/badge/Terminal-Fun-46a2f1?logo=asciinema)](https://github.com/topics/terminal-fun)
+[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/aadhilm/TERMINAL-TOOLS)
 
 ## Description
 
