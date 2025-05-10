@@ -55,8 +55,6 @@ This script is useful for:
 
 ## 📦 Installation
 
-### Required Packages
-
 Open terminal and type the following commands:
 
 Clone the repository:
