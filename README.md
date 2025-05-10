@@ -58,10 +58,11 @@ This script is useful for:
 Open terminal and type the following commands:
 
 Clone the repository:
-
-`git clone https://github.com/aadhilm/TERMINAL-TOOLS.git`
-`cd TERMINAL-TOOLS`
-`chmod +x *`
+```bash
+git clone https://github.com/aadhilm/TERMINAL-TOOLS.git
+cd TERMINAL-TOOLS`
+chmod +x *
+```
 
 ## Requirement packages installation [auto] :
 
