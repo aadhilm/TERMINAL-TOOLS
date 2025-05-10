@@ -6,8 +6,6 @@
 [![Terminal Fun](https://img.shields.io/badge/Terminal-Fun-46a2f1?logo=asciinema)](https://github.com/topics/terminal-fun)
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/aadhilm/TERMINAL-TOOLS)
 
-# TERMINAL-TOOLS
-
 ## Description
 
 This Bash script is an interactive command-line tool that provides a simple menu-based interface for performing various tasks, ranging from fun activities to system monitoring.
