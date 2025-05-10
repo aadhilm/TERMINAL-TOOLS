@@ -73,13 +73,13 @@ Clone the repository:
 
 ## Requirement packages installation command for each distribution [ manually ] :
 
->bash Android or ./Android [ Android ]
+`bash Android or ./Android` [ Android ]
 
->bash Debian or ./Debian [ Debian ]
+`bash Debian or ./Debian` [ Debian ]
 
->bash FEDORA or ./FEDORA [ FEDORA ]
+`bash FEDORA or ./FEDORA` [ FEDORA ]
 
->bash ARCH LINUX or ./ARCH LINUX [ ARCH LINUX ]
+`bash ARCH LINUX or ./ARCH LINUX` [ ARCH LINUX ]
 
 ## 🏃Run Command:
 
