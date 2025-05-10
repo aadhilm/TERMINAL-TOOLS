@@ -67,11 +67,11 @@ Clone the repository:
 `cd TERMINAL-TOOLS`
 `chmod +x *`
 
-#Requirement packages installation [auto] :
+## Requirement packages installation [auto] :
 
 `>install.sh`
 
-#Requirement packages installation command for each distribution [ manually ] :
+## Requirement packages installation command for each distribution [ manually ] :
 
 >bash Android or ./Android [ Android ]
 
@@ -81,16 +81,17 @@ Clone the repository:
 
 >bash ARCH LINUX or ./ARCH LINUX [ ARCH LINUX ]
 
-🏃Run Command:
+## 🏃Run Command:
 
 >./TERMINAL-TOOLS or bash TERMINAL-TOOLS
 
-Note: If the above command doesn't work, try :
+## Note: If the above command doesn't work, try :
 
 >bash Prototype or ./Prototype
 
-📝 License :
+## 📝 License :
 This project is open-source, licensed under [Apache License 2.0].
 
-🤝 Contributing :
+## 🤝 Contributing :
+
 Feel free to contribute to the repository by submitting issues or creating pull requests to add more tools or improve functionality.
