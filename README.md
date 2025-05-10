@@ -69,7 +69,7 @@ Clone the repository:
 
 ## Requirement packages installation [auto] :
 
-`>install.sh`
+`install.sh`
 
 ## Requirement packages installation command for each distribution [ manually ] :
 
@@ -83,11 +83,11 @@ Clone the repository:
 
 ## 🏃Run Command:
 
->./TERMINAL-TOOLS or bash TERMINAL-TOOLS
+`./TERMINAL-TOOLS or bash TERMINAL-TOOLS`
 
 ## Note: If the above command doesn't work, try :
 
->bash Prototype or ./Prototype
+`bash Prototype or ./Prototype`
 
 ## 📝 License :
 This project is open-source, licensed under [Apache License 2.0].
