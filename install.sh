@@ -70,3 +70,4 @@ fi
 # Final message
 echo
 echo -e "\033[1m Now Run bash TERMINAL-TOOLS...!!!"
+
