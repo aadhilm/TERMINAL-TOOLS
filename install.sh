@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# --- Auto-fix Windows CRLF line endings ---
+# This rewrites the script into a clean version if ^M (\r) characters are found
+if grep -q $'\r' "$0"; then
+    echo "Fixing Windows line endings..."
+    sed -i 's/\r$//' "$0"
+    exec bash "$0" "$@"   # restart script after cleaning
+fi
+
 # Common package list
 PACKAGES="ftp netcat openssh figlet toilet cowsay nano ruby fzf ranger fortune sl traceroute net-tools htop sysstat lolcat cmatrix cbonsai neofetch oneko calcurse bmon speedtest-cli bpytop nload inxi hollywood"
 
@@ -13,8 +21,8 @@ check_installed() {
     for pkg in $PACKAGES; do
         if command -v $pkg >/dev/null 2>&1 || \
            dpkg -s $pkg >/dev/null 2>&1 2>/dev/null || \
-           rpm -q $pkg >/dev/null 2>&1 || \
-           pkg list-installed | grep -q "^$pkg"; then
+           rpm -q $pkg >/dev/null 2>&1 2>/dev/null || \
+           (pkg list-installed 2>/dev/null | grep -q "^$pkg"); then
             installed+=("$pkg")
         else
             not_installed+=("$pkg")
@@ -70,4 +78,3 @@ fi
 # Final message
 echo
 echo -e "\033[1m Now Run bash TERMINAL-TOOLS...!!!"
-
